@@ -7,7 +7,7 @@ const Navbar = () => {
 
       {/* Right Side: Navigation Links */}
       <div className="flex items-center gap-8">
-        <a href="#" className="text-white/70 hover:text-white transition-colors duration-300">
+        <a href="#about" className="text-white/70 hover:text-white transition-colors duration-300">
           About Us
         </a>
         <a href="#" className="text-white/70 hover:text-white transition-colors duration-300">
