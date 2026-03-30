@@ -41,27 +41,31 @@ const Scene = ({
   } = useThree();
 
   useEffect(() => {
+    const cap = capRef.current;
+    const title = heroTitleRef.current;
+    const subline = heroSublineRef.current;
+
     if (
       isModelReady &&
-      capRef.current &&
-      heroTitleRef.current &&
-      heroSublineRef.current
+      cap &&
+      title &&
+      subline
     ) {
       const tl = gsap.timeline();
-      tl.set(capRef.current.position, {
+      tl.set(cap.position, {
         x: 0,
         y: -0.5
       });
-      tl.set(capRef.current.rotation, {
+      tl.set(cap.rotation, {
         y: 0
       });
-      tl.to(capRef.current.rotation, {
+      tl.to(cap.rotation, {
           y: Math.PI * 2,
           duration: 1.5,
           ease: "power2.inOut",
         })
         .to(
-          capRef.current.position, {
+          cap.position, {
             x: -3.5,
             duration: 1.5,
             ease: "power2.inOut",
@@ -69,7 +73,7 @@ const Scene = ({
           "-=1"
         )
         .to(
-          [heroTitleRef.current, heroSublineRef.current], {
+          [title, subline], {
             opacity: 1,
             duration: 1,
             stagger: 0.2,
@@ -85,47 +89,40 @@ const Scene = ({
         },
       });
       scrollTl
-        .to(capRef.current.position, {
+        .to(cap.position, {
           x: viewport.width / 2.5,
           y: -1,
         })
-        .to(capRef.current.rotation, {
+        .to(cap.rotation, {
             y: Math.PI / 1.5,
           }, "<")
-        .to(capRef.current.scale, {
+        .to(cap.scale, {
           x: 1.2,
           y: 1.2,
           z: 1.2,
         }, "<");
     }
-  }, [
-    isModelReady,
-    capRef,
-    heroTitleRef,
-    heroSublineRef,
-    camera,
-    viewport.width,
-  ]);
+  }, [isModelReady, capRef, heroTitleRef, heroSublineRef, camera, viewport.width]);
 
-  const blackPlastic = new THREE.MeshPhysicalMaterial({
-    color: "#121212",         // Deep Obsidian/Charcoal (Black Plastic)
-    roughness: 0.6,         // High roughness for that "matte" feel
-    metalness: 0.0,         // Real plastic has ZERO metalness
-    ior: 1.45,              // Standard Index of Refraction for Plastic
-    reflectivity: 0.5,      // How much light it reflects at 90 degrees
-    
+  const blackPlastic = useMemo(() => new THREE.MeshPhysicalMaterial({
+    color: "#121212", // Deep Obsidian/Charcoal (Black Plastic)
+    roughness: 0.6, // High roughness for that "matte" feel
+    metalness: 0.0, // Real plastic has ZERO metalness
+    ior: 1.45, // Standard Index of Refraction for Plastic
+    reflectivity: 0.5, // How much light it reflects at 90 degrees
+
     // CLEARCOAT: This is the "magic" for the black background.
     // It adds a thin glossy layer on top of the matte plastic.
-    clearcoat: 0.4,         
+    clearcoat: 0.4,
     clearcoatRoughness: 0.2,
-    
+
     // SHEEN: Gives it that soft "dusty" feel on the edges
     sheen: 1.0,
     sheenRoughness: 0.5,
     sheenColor: "#ffffff",
 
-    envMapIntensity: 1.5,   // Ensures the Environment map "highlights" the ribs
-  });
+    envMapIntensity: 1.5, // Ensures the Environment map "highlights" the ribs
+  }), []);
 
   return (
     <>
