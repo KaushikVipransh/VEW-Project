@@ -96,7 +96,7 @@ const AboutSection = ({ isModelReady, setIsModelReady }) => {
           <p className="mt-6 text-gray-400 leading-relaxed text-lg">
             At Vardhman Engineering Works, we specialize in high-tolerance
             plastic closure systems. Our commitment to 0.01mm accuracy ensures
-            that every cap we manufacture meets global standards.
+            that every cap we manufacture meets global standards. Lorem ipsum dolor sit amet.
           </p>
         </div>
       </div>

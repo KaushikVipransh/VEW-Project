@@ -40,7 +40,7 @@ export function CTASection() {
             </div>
             <h2 className="font-serif text-5xl md:text-6xl font-medium tracking-tight text-foreground mb-8 leading-[1.05]">
               Vardhman Engineering Works <br />
-              <span className="text-foreground/80">Delivered perfectly.</span>
+              <span className="text-foreground/80">Caps Manufacturing</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mb-12 leading-relaxed">
               Explore the pinnacle of Bottle Caps Manufacturing. In-house assembly, Precision-engineered, 
