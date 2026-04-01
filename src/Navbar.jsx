@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 px-8 flex justify-between items-center pointer-events-auto backdrop-blur-sm h-20 border-b border-white/10">
+    <nav className="fixed top-0 left-0 w-full z-[100] px-8 flex justify-between items-center pointer-events-auto bg-black/80 backdrop-blur-md h-20 border-b border-white/10">
       {/* Left Side: Logo */}
       <p className="text-white font-bold uppercase tracking-[0.3em]">VEW</p>
 

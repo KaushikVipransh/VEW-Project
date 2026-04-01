@@ -21,7 +21,9 @@ const MoldedPart = ({ onModelReady, blackPlasticMaterial, blueBandMaterial, ...p
       if (g.index) {
         buf.setIndex(new THREE.BufferAttribute(new Uint32Array(g.index.array), 1));
       }
+      
       buf.computeVertexNormals();
+      buf.center(); 
 
       setGeometry(buf);
       if (onModelReady) onModelReady();
@@ -34,18 +36,9 @@ const MoldedPart = ({ onModelReady, blackPlasticMaterial, blueBandMaterial, ...p
 
   if (!geometry) return null;
 
-  /**
-   * Blue band geometry:
-   *   Base skirt: y 0→1.20, centered at y=0.60
-   *   After centering (midY ≈ 0.95), base center in world ≈ y=-0.35
-   *   Band sits at mid-height of base: world y ≈ -0.35
-   *   Band height: 0.40, radius: 2.27 (just proud of base wall)
-   */
   return (
     <group {...props}>
-      {/* Main body — black plastic */}
       <mesh castShadow receiveShadow geometry={geometry} material={blackPlasticMaterial}>
-        {/* Brand text decal on front face of base skirt */}
         <Decal
           position={[0, -0.35, 2.22]}
           rotation={[0, 0, 0]}
@@ -55,8 +48,8 @@ const MoldedPart = ({ onModelReady, blackPlasticMaterial, blueBandMaterial, ...p
             transparent
             polygonOffset
             polygonOffsetFactor={-1}
-            roughness={0.88}
-            color="#080808"
+            roughness={0.8}
+            color="#050505"
           >
             <RenderTexture attach="map">
               <Text fontSize={2.4} color="white" fontWeight="bold" letterSpacing={0.10}>
@@ -67,9 +60,7 @@ const MoldedPart = ({ onModelReady, blackPlasticMaterial, blueBandMaterial, ...p
         </Decal>
       </mesh>
 
-      {/* Blue grip band — separate mesh, own material */}
-      {/* Positioned at mid-height of base in world space */}
-      <mesh castShadow receiveShadow material={blueBandMaterial} position={[0, -0.35, 0]}>
+      <mesh castShadow receiveShadow material={blueBandMaterial} position={[0.13, -0.35, 0]}>
         <cylinderGeometry args={[2.27, 2.27, 0.42, 80, 1]} />
       </mesh>
     </group>
