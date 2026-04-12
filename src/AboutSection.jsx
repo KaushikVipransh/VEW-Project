@@ -3,7 +3,7 @@ import gsap from "gsap";
 
 const AboutSection = () => {
   const sectionRef = useRef(null);
-  const leftPanelRef = useRef(null);
+  const rightPanelRef = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline({
@@ -15,30 +15,36 @@ const AboutSection = () => {
       },
     });
 
-    tl.fromTo(leftPanelRef.current, { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 1 });
+    tl.fromTo(rightPanelRef.current, { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 1 });
   }, []);
 
   return (
-    <div ref={sectionRef} className="w-full flex flex-col md:flex-row min-h-screen items-center px-10 gap-10 relative z-20 bg-transparent pointer-events-none">
+    <section 
+      ref={sectionRef}
+      id="about"
+      className="relative w-full min-h-screen flex items-center pointer-events-none overflow-hidden bg-transparent pt-[100px]"
+    >
+      {/* Left slot — transparent window into the 3D canvas/model */}
+      <div className="hidden md:block md:w-1/2 h-screen pointer-events-none bg-transparent" />
 
-      {/* Left slot — intentionally empty; the 3D model scroll-swaps into here */}
-      <div className="w-full md:w-1/2 h-[650px] relative z-10 pointer-events-none" />
-
-      {/* Right slot — text content */}
-      <div ref={leftPanelRef} className="w-full md:w-1/2 flex items-center justify-start p-6 z-20 pointer-events-auto">
-        <div className="w-full max-w-lg bg-white/[0.03] backdrop-blur-md border border-white/10 p-10 text-white rounded-xl shadow-2xl">
-          <h2 className="text-4xl font-bold font-serif leading-tight">
-            25 Years of Excellence
-          </h2>
-          <p className="mt-6 text-gray-400 leading-relaxed text-lg">
-            Vardhman Engineering Works began with a simple vision: to provide high-quality plastic bottle caps to India's growing bottle manufacturing industry.
-            Starting from a small workshop in Delhi’s Bawana Industrial Area, we have grown into a trusted partner for major bottle manufacturers across the country.
-            Our 25 years of experience has taught us that success in this business isn't just about making caps-it’s about understanding our clients' needs and delivering reliable, consistent quality at scale.
-          </p>
-        </div>
+      {/* Right slot — text content, right-aligned, centered vertically in right half */}
+      <div 
+        ref={rightPanelRef}
+        className="w-full md:w-1/2 flex flex-col items-end justify-center pr-[6vw] pl-12 py-16 z-20 pointer-events-auto"
+      >
+        <h2 className="text-white font-black uppercase text-right leading-tight mb-10 text-5xl md:text-6xl lg:text-7xl tracking-tight">
+          25 Years<br />
+          of Excellence
+        </h2>
+        <p className="text-gray-400 text-lg leading-relaxed max-w-md text-right">
+          Vardhman Engineering Works began with a simple vision: to provide high-quality plastic bottle caps to India's growing bottle manufacturing industry.
+          Starting from a small workshop in Delhi’s Bawana Industrial Area, we have grown into a trusted partner for major bottle manufacturers across the country.
+          Our 25 years of experience has taught us that success in this business isn't just about making caps—it's about understanding our clients' needs and delivering reliable, consistent quality at scale.
+        </p>
       </div>
-    </div>
+    </section>
   );
 };
 
 export default AboutSection;
+
