@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export function HeroSection({ isModelReady }) {
   return (
@@ -66,7 +67,8 @@ export function HeroSection({ isModelReady }) {
         </p>
 
         {/* Ghost Button */}
-        <button
+        <Link
+          to="/products"
           className="
             pointer-events-auto
             mt-12 px-10 py-3 border border-white/30 rounded-lg
@@ -76,7 +78,7 @@ export function HeroSection({ isModelReady }) {
           "
         >
           View Products
-        </button>
+        </Link>
       </div>
     </div>
   );

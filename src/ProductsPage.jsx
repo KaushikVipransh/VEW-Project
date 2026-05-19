@@ -593,10 +593,7 @@ export default function ProductsPage() {
               }}
             >
               REQUEST QUOTE
-              {/* Small diamond icon */}
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                <path d="M6 0L8 5H12L8.5 8L10 12L6 9.5L2 12L3.5 8L0 5H4L6 0Z" fill="#0a0800" fillOpacity="0.7" />
-              </svg>
+              
             </button>
 
             {/* Sub-note */}
