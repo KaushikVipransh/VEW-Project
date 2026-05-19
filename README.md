@@ -1,4 +1,5 @@
 Vardhman Engineering Works | B2B Web Platform | https://vew-project.vercel.app/
+
 A high-performance, immersive corporate web platform built for Vardhman Engineering Works, a leading manufacturer of plastic bottle caps in India with over 25 years of industry excellence.
 
 This platform leverages WebGL and advanced scroll-linked animations to deliver a premium, tailored product showcase while maintaining strict performance standards.
@@ -27,5 +28,7 @@ Responsive Design: Fully responsive layouts managed via Tailwind CSS, ensuring t
 
 
 👨‍💻 Developer
+
 Developed by: Vipransh Kaushik
+
 Freelance Full-Stack Developer
