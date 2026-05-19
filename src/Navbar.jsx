@@ -10,10 +10,10 @@ const Navbar = () => {
         <a href="#about" className="text-white/70 hover:text-white transition-colors duration-300">
           About Us
         </a>
-        <a href="#" className="text-white/70 hover:text-white transition-colors duration-300">
+        <a href="#product-section" className="text-white/70 hover:text-white transition-colors duration-300">
           Our Products
         </a>
-        <a href="#" className="text-white/70 hover:text-white transition-colors duration-300">
+        <a href="#clients" className="text-white/70 hover:text-white transition-colors duration-300">
           Our Clients
         </a>
         <button className="px-4 py-2 border border-white/20 text-white/70 rounded-md hover:bg-white hover:text-black transition-colors duration-300">
